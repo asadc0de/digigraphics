@@ -1,0 +1,113 @@
+{
+    "section": {
+      "name": "What We Do Best",
+      "background": "#1a1a1a",
+      "padding": {
+        "top": "80px",
+        "bottom": "80px",
+        "left": "40px",
+        "right": "40px"
+      },
+      "heading": {
+        "text": "What We Do Best",
+        "fontSize": "32px",
+        "fontWeight": "700",
+        "color": "#ffffff",
+        "textAlign": "center",
+        "marginBottom": "12px"
+      },
+      "subheading": {
+        "text": "From strategy to execution, our services are built to elevate your brand, engage your audience, and drive measurable growth.",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "color": "#bbbbbb",
+        "textAlign": "center",
+        "maxWidth": "700px",
+        "margin": "0 auto 48px auto"
+      },
+      "grid": {
+        "columns": 3,
+        "gap": "20px",
+        "items": [
+          {
+            "title": "Data-Backed Strategy",
+            "description": "We craft marketing plans built on real insights, not guesswork—so every move has purpose.",
+            "icon": "binoculars",
+            "background": "#262626",
+            "color": "#ffffff",
+            "padding": "24px",
+            "borderRadius": "12px",
+            "colSpan": 1,
+            "rowSpan": 2
+          },
+          {
+            "title": "Targeted Campaigns",
+            "description": "Reach the right audience at the right time with campaigns that convert across every platform.",
+            "icon": "target",
+            "background": "#2e2e2e",
+            "color": "#ffffff",
+            "padding": "24px",
+            "borderRadius": "12px",
+            "colSpan": 2,
+            "rowSpan": 1
+          },
+          {
+            "title": "Social Media Management",
+            "description": "From content calendars to engagement boosts.",
+            "icon": "users",
+            "background": "#1f1f1f",
+            "color": "#ffffff",
+            "padding": "24px",
+            "borderRadius": "12px",
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "title": "SEO & Content Marketing",
+            "description": "Boost visibility and authority with content that ranks, resonates, and delivers long-term value.",
+            "icon": "magnifier",
+            "background": "#1f1f1f",
+            "color": "#ffffff",
+            "padding": "24px",
+            "borderRadius": "12px",
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "title": "Creative Branding",
+            "description": "Stand out with bold visuals, sharp messaging, and a brand identity that speaks your language.",
+            "icon": "palette",
+            "background": "#2a2a2a",
+            "color": "#ffffff",
+            "padding": "24px",
+            "borderRadius": "12px",
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "title": "Performance Analytics",
+            "description": "Track results in real-time and adapt fast—because great marketing never stands still.",
+            "icon": "pie-chart",
+            "background": "#2a2a2a",
+            "color": "#ffffff",
+            "padding": "24px",
+            "borderRadius": "12px",
+            "colSpan": 1,
+            "rowSpan": 1
+          },
+          {
+            "title": "",
+            "description": "",
+            "icon": "bell",
+            "background": "#2f2f2f",
+            "color": "#ffffff",
+            "padding": "24px",
+            "borderRadius": "12px",
+            "colSpan": 2,
+            "rowSpan": 1
+          }
+        ]
+      }
+    }
+  }
+  

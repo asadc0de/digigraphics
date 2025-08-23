@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0a0908;
+  --text-primary: #ececec;
+  --border-color: #ffffff14;
+}
+
+@font-face {
+  font-family: matter-light;
+  src: url("./assets/fonts/matter-light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: boldF;
+  src: url("./assets/fonts/boldF.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: v3;
+  src: url("./assets/fonts/v3.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body{
+  font-family: 'matter-light';
+}
+#headline{
+  font-family: 'boldF';
+}
+#slogan{
+  font-family:'matter-light';
+}
+
+@theme inline {
+  --animate-move: move 5s linear infinite;
+
+  @keyframes move {
+    0% {
+      transform: translateX(-200px);
+    }
+
+    100% {
+      transform: translateX(200px);
+    }
+  }
+}
+
+
+
+
+/* ------------Services------------ */
+
+/* Enhanced hover effects */
+.service-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  transition: left 0.5s;
+}
+
+.service-card:hover::before {
+  left: 100%;
+}
+
+/* Animation delays for background elements */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Custom scrollbar for better aesthetics */
+/* ::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #8b5cf6, #3b82f6);
+  backdrop-filter: blur(30px);
+  border-radius: 4px;
+} */
+
+.bento-section {
+  position: relative;
+  overflow: hidden;
+  
+}
+
+.bento-section::before {
+  content: '';
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  height: 70%;
+  top: 10%;
+  left: 20%;
+  background: 
+    radial-gradient(circle, 
+      rgb(255, 255, 255) 0%, 
+      rgba(5, 0, 163, 0.947) 30%, 
+      rgb(0, 34, 87) 60%, 
+      transparent 100%);
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: -10;
+  animation: blueGlow1 4s ease-in-out infinite alternate;
+}
+
+/* .bento-section::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  bottom: 15%;
+  right: 15%;
+  background: 
+    radial-gradient(circle, 
+      rgba(255, 255, 255, 0.8) 0%, 
+      rgba(59, 130, 246, 0.6) 25%, 
+      rgba(59, 130, 246, 0.2) 50%, 
+      transparent 100%);
+  border-radius: 50%;
+  filter: blur(70px);
+  z-index: -1;
+  animation: blueGlow2 5s ease-in-out infinite alternate-reverse;
+} */
+
+@keyframes blueGlow1 {
+  0% { 
+    opacity: 0.7;
+    transform: scale(1);
+    filter: blur(80px) brightness(1);
+  }
+  100% { 
+    opacity: 1;
+    transform: scale(1.1);
+    filter: blur(60px) brightness(1.3);
+  }
+}
+
+@keyframes blueGlow2 {
+  0% { 
+    opacity: 0.6;
+    transform: scale(1);
+    filter: blur(70px) brightness(1);
+  }
+  100% { 
+    opacity: 0.9;
+    transform: scale(1.05);
+    filter: blur(50px) brightness(1.2);
+  }
+}
+
+
+
+
+
+
+/* global.css */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
