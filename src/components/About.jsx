@@ -35,7 +35,7 @@ const About = () => {
       <div className="lg:text-5xl md:text-3xl text-[2rem] md:w-[75%] w-full lg:leading-14 px-2 bg-gradient-to-r from-[#343434] via-white to-[#fff] 
   bg-clip-text text-transparent">
         <p>
-          I'm AsadAl, a designer who loves turning imagination into visuals. I
+          I'm Shazma, a designer who loves turning imagination into visuals. I
           create logos{" "}
           <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:h-8 w-8 h-5 inline-block rounded-full overflow-hidden">
             <video

@@ -9,7 +9,7 @@ const Footer = () => {
       {/* Text Pressure */}
       <div className="px-4 md:px-10 border-t border-[#ffffff14]">
         <TextPressure
-          text="Asad Graphics"
+          text="Digi Graphics"
           flex={true}
           width={true}
           weight={true}
