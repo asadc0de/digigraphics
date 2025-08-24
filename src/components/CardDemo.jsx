@@ -72,8 +72,8 @@ const Skeleton = () => {
   }, []);
   return (
     <div
-      className="px-8 overflow-hidden h-full relative flex items-center justify-center">
-      <div className="flex flex-row shrink-0 justify-center items-center gap-2">
+      className="px-4 md:px-8 overflow-hidden h-full relative flex items-center justify-center w-full max-w-full">
+      <div className="flex flex-row shrink-0 justify-center items-center gap-1 md:gap-2 w-full max-w-full">
         <Container className="h-8 w-8 circle-1">
           <ClaudeLogo className="h-4 w-4 " />
         </Container>

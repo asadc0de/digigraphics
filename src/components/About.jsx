@@ -54,13 +54,13 @@ const About = () => {
   // }, [currentIndex]);
 
   return (
-    <div className="w-full min-h-screen lg:px-28 md:px-22 px-6">
+    <div className="w-full lg:px-28 md:px-22 px-4 py-20 overflow-x-hidden">
       {/* Upper Text */}
-      <div className="lg:text-5xl md:text-3xl text-[2rem] md:w-[75%] w-full lg:leading-14">
+      <div className="lg:text-5xl md:text-3xl text-[2rem] md:w-[75%] w-full lg:leading-14 px-2">
         <p>
           I'm AsadAl, a designer who loves turning imagination into visuals. I
           create logos{" "}
-          <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:8 w-8 h-5 inline-block rounded-full overflow-hidden">
+          <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:h-8 w-8 h-5 inline-block rounded-full overflow-hidden">
             <video
               className="w-full h-full object-cover"
               src={logo}
@@ -70,11 +70,11 @@ const About = () => {
             ></video>
           </span>
           , graphics{" "}
-          <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:8 w-8 h-5 rounded-full overflow-hidden inline-flex justify-center items-center">
+          <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:h-8 w-8 h-5 rounded-full overflow-hidden inline-flex justify-center items-center">
             <img className="w-10 object-cover" src={graphics} alt="" />
           </span>
           , and brand stories{" "}
-          <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:8 w-8 h-5 inline-block rounded-full overflow-hidden relative">
+          <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:h-8 w-8 h-5 inline-block rounded-full overflow-hidden relative">
             <img
               className="w-full object-cover absolute top-[2px]"
               src={brandStories}
@@ -87,9 +87,9 @@ const About = () => {
       </div>
       {/* Lower Cards */}
       <div className="border-t border-[#ffffff14] mt-8 pt-8">
-        <div className="flex justify-between relative">
+        <div className="flex justify-end relative">
           {/* Card */}
-          <div className="lg:w-[22%] md:w-[40%] w-[100%] border border-[#ffffff14] rounded-3xl p-4 absolute right-0 top-0 overflow-hidden">
+          <div className="lg:w-[22%] md:w-[40%] w-[100%] border border-[#ffffff14] rounded-3xl p-4 overflow-hidden">
             <h3 ref={numberRef} className="md:text-xl text-base font-bold">
               {cardData[currentIndex].number}
             </h3>

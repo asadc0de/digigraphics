@@ -4,10 +4,10 @@ import blackHole from "../assets/black hole.webm";
 
 export default function Services() {
   return (
-    <section className="w-full px-6 py-20">
+    <section className="w-full px-4 md:px-6 py-20 overflow-hidden">
       {/* Text */}
-      <div className="text-center mb-16">
-        <h2 className="lg:text-5xl md:text-3xl text-[1.7rem] font-bold text-white mb-6">
+      <div className="text-center mb-16 px-2">
+        <h2 className="lg:text-5xl md:text-3xl text-[1.7rem] font-bold text-white mb-6 font-[boldF]">
           Design Solutions That Deliver
         </h2>
 
@@ -16,7 +16,7 @@ export default function Services() {
           only look amazing but perform exceptionally.
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-6xl mx-auto relative bento-section">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-6xl mx-auto relative bento-section px-2">
         {/* Row 1 - Narrow Left */}
         <div className="relative rounded-3xl min-h-[280px] overflow-hidden">
           {/* Gradient border wrapper */}
@@ -27,7 +27,7 @@ export default function Services() {
 
           {/* Content with gradient bg */}
           <div
-            className="relative rounded-3xl p-6 flex flex-col justify-between h-full 
+            className="relative rounded-3xl p-4 md:p-6 flex flex-col justify-between h-full 
     bg-gradient-to-t from-[#0a0a0a]/20 via-[#0d0d0d]/40 to-[#1a1a1a]/80"
           >
             <h3 className="md:text-xl text-[1.7rem] font-semibold mb-3">Flyer Design</h3>
@@ -43,7 +43,7 @@ export default function Services() {
         <div className="relative md:col-span-2 rounded-3xl min-h-[280px] overflow-hidden">
           {/* Svg */}
           <div className="absolute bottom-3 right-3 opacity-25">
-            <img className="w-56" src={packeging} alt="" />
+            <img className="w-40 md:w-56" src={packeging} alt="" />
           </div>
           {/* Gradient border wrapper */}
           <div
@@ -53,7 +53,7 @@ export default function Services() {
 
           {/* Content with gradient bg */}
           <div
-            className="relative rounded-3xl p-6 flex flex-col justify-between h-full 
+            className="relative rounded-3xl p-4 md:p-6 flex flex-col justify-between h-full 
                   bg-gradient-to-t from-[#0a0a0a]/0 via-[#0d0d0d]/70 to-[#1a1a1a]/100"
           >
             <h3 className="md:text-xl text-[1.7rem] font-semibold mb-3">Logo Design</h3>
@@ -70,7 +70,7 @@ export default function Services() {
         <div className="relative md:col-span-2 rounded-3xl min-h-[280px] overflow-hidden">
           {/* Svg */}
           <div className="absolute bottom-3 right-3 opacity-25">
-            <img className="w-56" src={Web} alt="Poster Design" />
+            <img className="w-40 md:w-56" src={Web} alt="Poster Design" />
           </div>
 
           {/* Gradient border wrapper */}
@@ -81,7 +81,7 @@ export default function Services() {
 
           {/* Content with gradient bg */}
           <div
-            className="relative rounded-3xl p-6 flex flex-col justify-between h-full 
+            className="relative rounded-3xl p-4 md:p-6 flex flex-col justify-between h-full 
     bg-gradient-to-t from-[#0a0a0a]/0 via-[#0d0d0d]/70 to-[#1a1a1a]/100"
           >
             <h3 className="md:text-xl text-[1.7rem] font-semibold mb-3">Poster Design</h3>
@@ -103,7 +103,7 @@ export default function Services() {
 
           {/* Content with gradient bg */}
           <div
-            className="relative rounded-3xl p-6 flex flex-col justify-between h-full 
+            className="relative rounded-3xl p-4 md:p-6 flex flex-col justify-between h-full 
                   bg-gradient-to-t from-[#0a0a0a]/0 via-[#0d0d0d]/70 to-[#1a1a1a]/100"
           >
             <h3 className="md:text-xl text-[1.7rem] font-semibold mb-3">Packaging</h3>
