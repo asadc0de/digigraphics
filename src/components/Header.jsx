@@ -1,33 +1,105 @@
-import { BiMenu } from "react-icons/bi";
 import Image from "../assets/logo.png";
+import { useState } from "react";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+  
+
+  const menuItems = [
+    { name: "About", href: "#about" },
+    { name: "Work", href: "#work" },
+    { name: "Services", href: "#services" },
+    { name: "Contact", href: "#contact" },
+  ];
+
   return (
-    <div className="border-[#ffffff14] border lg:w-[70%] md:w-[80%] w-[95%] max-w-[95vw] mt-5 backdrop-blur-[30px] flex justify-between items-center rounded-4xl md:px-8 px-4 py-2 fixed top-0 z-50 left-1/2 transform -translate-x-1/2">
-      {/* Image */}
-      <div>
-        <img className="lg:w-14 md:w-10 w-7" src={Image} alt="logo" />
-      </div>
-      {/* Navbar */}
-      <nav>
-          {/* Icon */}
+    <>
+      <div className="border-[#ffffff14] border lg:w-[70%] md:w-[80%] w-[95%] max-w-[95vw] mt-5 backdrop-blur-[30px] flex justify-between items-center rounded-4xl md:px-8 px-4 py-2 fixed top-0 z-50 left-1/2 transform -translate-x-1/2">
+        {/* Image */}
+        <div>
+          <img className="lg:w-14 md:w-10 w-7" src={Image} alt="logo" />
+        </div>
+        {/* Navbar */}
+        <nav>
+          {/* Desktop Menu */}
+          <ul className="md:flex gap-8 hidden">
+            {menuItems.map((item) => (
+              <li key={item.name} className="cursor-pointer hover:text-[#dadada] duration-300 px-3">
+                {item.name}
+              </li>
+            ))}
+          </ul>
+          
+          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <BiMenu />
+            <button
+              onClick={toggleMenu}
+              className={`menu__icon ${isMenuOpen ? 'active' : ''}`}
+            >
+              <span></span>
+              <span></span>
+            </button>
           </div>
-        <ul className="md:flex gap-8 hidden ">
-          <li className="cursor-pointer hover:text-[#dadada] duration-300 px-3">
-            About
-          </li>
-          <li className="cursor-pointer hover:text-[#dadada] duration-300 px-3">
-            Work
-          </li>
-          <li className="cursor-pointer hover:text-[#dadada] duration-300 px-3">
-            Services
-          </li>
-          <li className="cursor-pointer hover:text-[#dadada]">Contact</li>
-        </ul>
-      </nav>
-    </div>
+        </nav>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-40 md:hidden">
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0  backdrop-blur-sm"
+            onClick={toggleMenu}
+          />
+          
+                     {/* Menu Content */}
+           <div className="absolute top-20 left-1/2 transform -translate-x-1/2 w-80 bg-transparent backdrop-blur-xl border border-[#ffffff14] rounded-3xl transition-all duration-300 ease-in-out shadow-2xl">
+            <div className="flex flex-col">
+              
+              {/* Menu Items */}
+              <nav className="px-6 py-8">
+                <ul className="space-y-6">
+                  {menuItems.map((item, index) => (
+                    <li key={item.name}>
+                      <a
+                        href={item.href}
+                        onClick={toggleMenu}
+                        className="text-xl font-[boldF] text-white hover:text-[#CDD1D8] transition-all duration-300 block py-3 border-b border-transparent hover:border-[#ffffff14] text-center"
+                        style={{
+                          animationDelay: `${index * 100}ms`,
+                          animation: 'slideInRight 0.5s ease-out forwards'
+                        }}
+                      >
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+              
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CSS Animation */}
+      <style jsx>{`
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+      `}</style>
+    </>
   );
 };
 

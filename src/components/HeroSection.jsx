@@ -24,8 +24,11 @@ const HeroSection = () => {
         className="flex flex-col items-center justify-center flex-1 text-center px-4 w-full mt-8"
       >
         {/* Trust Headline */}
-        <div className="font-[matter-light] mb-11 w-full max-w-full ">
-          <button className="border border-[#ffffff14] mx-auto text-white px-4 py-2 rounded-3xl cursor-pointer flex items-center gap-2 hover:gap-5 transition-all duration-300 backdrop-blur-3xl md:text-base text-[11px] max-w-full overflow-hidden">
+        <div className="font-[matter-light] mb-11 w-full max-w-full flex justify-center">
+          <button
+            className="border border-[#ffffff14] text-white rounded-3xl cursor-pointer flex items-center gap-2 hover:gap-5 transition-all duration-300 backdrop-blur-3xl md:text-base text-[11px] max-w-full overflow-hidden"
+            style={{ paddingTop: "0.5rem", paddingBottom: "0.5rem", paddingLeft: "1rem", paddingRight: "1rem" }}
+          >
             Trusted by 50+ Clients Across the Globe
             <span className="transition-transform flex-shrink-0">
               <GoGlobe />
@@ -33,10 +36,19 @@ const HeroSection = () => {
           </button>
         </div>
         {/* Headline */}
-        <h1 className="md:w-[70%] w-[95%] lg:text-6xl md:text-4xl text-3xl font-[boldF] max-w-full">Innovation Framed in Every Pixel</h1>
+        <h1
+          className="md:w-[70%] w-[95%] lg:text-6xl md:text-4xl text-3xl font-[boldF] max-w-full 
+  bg-gradient-to-r from-[#333] via-white to-[#333] 
+  bg-clip-text text-transparent"
+        >
+          Innovation Framed in Every Pixel
+        </h1>
 
         {/* Slogan */}
-        <p id="slogan" className="md:mt-4 mt-6 lg:text-xl md:text-lg text-sm md:w-[70%] w-[95%] max-w-full">
+        <p
+          id="slogan"
+          className="md:mt-4 mt-6 lg:text-xl md:text-lg text-sm md:w-[70%] w-[95%] max-w-full text-[#CDD1D8]"
+        >
           Great Ideas, Greater Designs — Growing Your Business Visually
         </p>
 

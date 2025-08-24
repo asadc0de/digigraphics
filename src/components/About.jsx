@@ -1,13 +1,14 @@
 import logo from "../assets/web_develop.mp4";
 import graphics from "../assets/img (5).gif";
 import brandStories from "../assets/people.gif";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRef } from "react";
 
 const About = () => {
   const numberRef = useRef();
   const textRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const cardData = [
     { number: "50 +", text: "Clients Worldwide" },
@@ -15,48 +16,24 @@ const About = () => {
     { number: "3 +", text: "Years of Experience" },
   ];
 
-  // useEffect(() => {
-  //   let timeoutId;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
 
-  //   const animateToNext = () => {
-  //     const nextIndex = (currentIndex + 1) % cardData.length;
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % cardData.length);
+        setIsAnimating(false);
+      }, 3000); // Increased from 300ms to 600ms for smoother transition
+    }, 3000); // Increased from 1000ms to 3000ms (3 seconds) for slower cycling
 
-  //     // Smooth fade transition with shorter duration
-  //     const tl = gsap.timeline({
-  //       onComplete: () => {
-  //         // Continue the loop - removed the condition that was stopping it
-  //         timeoutId = setTimeout(animateToNext, 1500); // Shorter delay between changes
-  //       }
-  //     });
-
-  //     // Faster fade out
-  //     tl.to([numberRef.current, textRef.current], {
-  //       opacity: 0,
-  //       duration: 0.6, // Faster fade
-  //       ease: "power1.inOut"
-  //     })
-  //     // Update content
-  //     .call(() => setCurrentIndex(nextIndex))
-  //     // Faster fade in
-  //     .to([numberRef.current, textRef.current], {
-  //       opacity: 1,
-  //       duration: 0.6, // Faster fade
-  //       ease: "power1.inOut"
-  //     });
-  //   };
-
-  //   // Start after shorter initial delay
-  //   timeoutId = setTimeout(animateToNext, 1500);
-
-  //   return () => {
-  //     if (timeoutId) clearTimeout(timeoutId);
-  //   };
-  // }, [currentIndex]);
+    return () => clearInterval(interval);
+  }, [cardData.length]);
 
   return (
     <div className="w-full lg:px-28 md:px-22 px-4 py-20 overflow-x-hidden">
       {/* Upper Text */}
-      <div className="lg:text-5xl md:text-3xl text-[2rem] md:w-[75%] w-full lg:leading-14 px-2">
+      <div className="lg:text-5xl md:text-3xl text-[2rem] md:w-[75%] w-full lg:leading-14 px-2 bg-gradient-to-r from-[#343434] via-white to-[#fff] 
+  bg-clip-text text-transparent">
         <p>
           I'm AsadAl, a designer who loves turning imagination into visuals. I
           create logos{" "}
@@ -89,11 +66,22 @@ const About = () => {
       <div className="border-t border-[#ffffff14] mt-8 pt-8">
         <div className="flex justify-end relative">
           {/* Card */}
-          <div className="lg:w-[22%] md:w-[40%] w-[100%] border border-[#ffffff14] rounded-3xl p-4 overflow-hidden">
-            <h3 ref={numberRef} className="md:text-xl text-base font-bold">
+          <div className="lg:w-[22%] md:w-[40%] w-[100%] border border-[#ffffff14] rounded-3xl p-4 overflow-hidden bg-[#090909]">
+            <h3
+              ref={numberRef}
+              className={`md:text-xl text-base font-bold font-[boldF] transition-opacity duration-600 ${
+                isAnimating ? "opacity-0" : "opacity-100"
+              }`}
+            >
               {cardData[currentIndex].number}
             </h3>
-            <p ref={textRef} className="mt-14 lg:text-4xl md:text-2xl text-xl text-right">
+            <p
+              ref={textRef}
+              className={`mt-14 lg:text-4xl md:text-2xl text-[2rem] text-right transition-opacity duration-600 bg-gradient-to-r from-[#343434] via-white to-[#343434] 
+  bg-clip-text text-transparent ${
+                isAnimating ? "opacity-0" : "opacity-100"
+              }`}
+            >
               {cardData[currentIndex].text}
             </p>
           </div>

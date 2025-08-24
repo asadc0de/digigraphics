@@ -6,12 +6,13 @@ import Cta from "./Cta";
 
 const Work = () => {
   return (
-    <div className="w-full lg:px-28 md:px-22 px-4 py-20 relative overflow-hidden bg-[#000000]">
+    <div className="w-full lg:px-28 md:px-22 px-4 py-14 relative overflow-hidden bg-[#000000]">
       {/* Text */}
-      <h2 class="lg:text-5xl md:text-3xl text-[1.7rem] font-bold text-center font-[boldF]">
+      <h2 class="lg:text-5xl md:text-3xl text-[1.7rem] font-bold text-center font-[boldF] bg-gradient-to-r from-[#343434] via-white to-[#343434] 
+  bg-clip-text text-transparent">
         Some Fancy Selected Work
       </h2>
-      <p class="mt-4 text-gray-400 md:text-xl text-base text-center max-w-2xl mx-auto px-2">
+      <p class="mt-4 text-[#CDD1D8] md:text-xl text-base text-center max-w-2xl mx-auto px-2">
         From brands to digital experiences, every project is a story brought to
         life, crafted with precision and passion.
       </p>
@@ -26,7 +27,7 @@ const Work = () => {
       {/* Container */}
       <section className="mt-14 flex lg:flex-row flex-col justify-center items-center gap-3 px-2">
         {/* Card 1 */}
-        <div className="relative flex-1 md:h-[80vh] h-[50vh] rounded-3xl border border-[#ffffff14] overflow-hidden">
+        <div className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden">
           {/* Image */}
           <img
             className="w-full h-full object-cover"
@@ -48,7 +49,7 @@ const Work = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="relative flex-1 md:h-[80vh] h-[50vh] rounded-3xl border border-[#ffffff14] overflow-hidden">
+        <div className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden">
           <img
             className="w-full h-full object-cover"
             src={work1}
@@ -65,7 +66,7 @@ const Work = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="relative flex-1 md:h-[80vh] h-[50vh] rounded-3xl border border-[#ffffff14] overflow-hidden">
+        <div className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden">
           <img
             className="w-full h-full object-cover"
             src={work2}
