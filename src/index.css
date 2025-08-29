@@ -13,18 +13,30 @@
   font-style: normal;
 }
 @font-face {
+  font-family: neue;
+  src: url("./assets/fonts/NeueMachina-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
   font-family: boldF;
   src: url("./assets/fonts/novaklasse-semibold.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
-
+html{
+  scroll-behavior: smooth;
+}
 body{
-  font-family: 'matter-light';
+  font-family: 'neue';
   overflow-x: hidden;
   max-width: 100vw;
   position: relative;
+  cursor: url('./assets/cursor.png'), auto;
+}
+.cta{
+  border: 1px solid #ffffff14;
 }
 
 /* Mobile-specific overflow fixes */

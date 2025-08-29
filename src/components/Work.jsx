@@ -6,13 +6,18 @@ import Cta from "./Cta";
 
 const Work = () => {
   return (
-    <div className="w-full lg:px-28 md:px-22 px-4 py-14 relative overflow-hidden bg-[#000000]">
+    <div
+      id="work"
+      className="scroll-mt-16 w-full lg:px-28 md:px-22 px-4 py-14 relative overflow-hidden bg-[#000000]"
+    >
       {/* Text */}
-      <h2 class="lg:text-5xl md:text-3xl text-[1.7rem] font-bold text-center font-[boldF] bg-gradient-to-r from-[#343434] via-white to-[#343434] 
-  bg-clip-text text-transparent">
+      <h2
+        class="lg:text-5xl md:text-3xl text-[1.7rem] font-bold text-center font-[neue] bg-gradient-to-r from-[#343434] via-white to-[#343434] 
+  bg-clip-text text-transparent leading-14"
+      >
         Some Fancy Selected Work
       </h2>
-      <p class="mt-4 text-[#CDD1D8] md:text-xl text-base text-center max-w-2xl mx-auto px-2">
+      <p class="mt-4 text-[#CDD1D8] md:text-xl text-base text-center max-w-2xl mx-auto px-2 font-[matter-light]">
         From brands to digital experiences, every project is a story brought to
         life, crafted with precision and passion.
       </p>
@@ -84,7 +89,7 @@ const Work = () => {
       </section>
       {/* Cta */}
       <div className="flex justify-end mt-8 px-2">
-        <Cta text={"See All"} />
+        <Cta text={"See All"} link={"/projects"} />
       </div>
     </div>
   );

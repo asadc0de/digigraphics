@@ -26,8 +26,13 @@ const HeroSection = () => {
         {/* Trust Headline */}
         <div className="font-[matter-light] mb-11 w-full max-w-full flex justify-center">
           <button
-            className="border border-[#ffffff14] text-white rounded-3xl cursor-pointer flex items-center gap-2 hover:gap-5 transition-all duration-300 backdrop-blur-3xl md:text-base text-[11px] max-w-full overflow-hidden"
-            style={{ paddingTop: "0.5rem", paddingBottom: "0.5rem", paddingLeft: "1rem", paddingRight: "1rem" }}
+            className="border border-[#ffffff14] text-white rounded-3xl flex items-center gap-2 hover:gap-5 transition-all duration-300 backdrop-blur-3xl md:text-base text-[11px] max-w-full overflow-hidden cta"
+            style={{
+              paddingTop: "0.5rem",
+              paddingBottom: "0.5rem",
+              paddingLeft: "1rem",
+              paddingRight: "1rem",
+            }}
           >
             Trusted by 50+ Clients Across the Globe
             <span className="transition-transform flex-shrink-0">
@@ -37,19 +42,19 @@ const HeroSection = () => {
         </div>
         {/* Headline */}
         <h1
-          className="md:w-[70%] w-[95%] lg:text-6xl md:text-4xl text-3xl font-[boldF] max-w-full 
-  bg-gradient-to-r from-[#333] via-white to-[#333] 
+          className="md:w-[65%] w-[95%] lg:text-7xl md:text-4xl text-3xl font-[neue] font-extrabold max-w-full 
+  bg-gradient-to-r from-[#111] via-white to-[#111] 
   bg-clip-text text-transparent"
         >
-          Innovation Framed in Every Pixel
+          Innovation in Every Website We Build
         </h1>
 
         {/* Slogan */}
         <p
           id="slogan"
-          className="md:mt-4 mt-6 lg:text-xl md:text-lg text-sm md:w-[70%] w-[95%] max-w-full text-[#CDD1D8]"
+          className="font-[matter-light] md:mt-4 mt-6 lg:text-xl md:text-lg text-sm md:w-[70%] w-[95%] max-w-full text-[#CDD1D8]"
         >
-          Great Ideas, Greater Designs — Growing Your Business Visually
+          Great Ideas, Greater Websites — Growing Your Business Online
         </p>
 
         {/* Animated Icons */}
@@ -58,7 +63,7 @@ const HeroSection = () => {
         </div>
 
         {/* CTA */}
-        <Cta text={"Start Your Design Journey"} />
+        <Cta text={"Launch Your Online Presence"} link={'https://wa.me/+923150676136'} />
       </div>
     </div>
   );

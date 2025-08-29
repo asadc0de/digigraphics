@@ -30,13 +30,17 @@ const About = () => {
   }, [cardData.length]);
 
   return (
-    <div className="w-full lg:px-28 md:px-22 px-4 py-20 overflow-x-hidden">
+    <div
+      id="about"
+      className="scroll-mt-10 w-full lg:px-28 md:px-22 px-4 py-14 overflow-x-hidden"
+    >
       {/* Upper Text */}
-      <div className="lg:text-5xl md:text-3xl text-[2rem] md:w-[75%] w-full lg:leading-14 px-2 bg-gradient-to-r from-[#343434] via-white to-[#fff] 
-  bg-clip-text text-transparent">
+      <div
+        className="lg:text-5xl md:text-3xl text-[2rem] md:w-[75%] w-full lg:leading-14 px-2 bg-gradient-to-r from-[#343434] via-white to-[#fff] 
+  bg-clip-text text-transparent"
+      >
         <p>
-          I'm Shazma, a designer who loves turning imagination into visuals. I
-          create logos{" "}
+          We create websites{" "}
           <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:h-8 w-8 h-5 inline-block rounded-full overflow-hidden">
             <video
               className="w-full h-full object-cover"
@@ -46,11 +50,11 @@ const About = () => {
               loop
             ></video>
           </span>
-          , graphics{" "}
+          , solutions{" "}
           <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:h-8 w-8 h-5 rounded-full overflow-hidden inline-flex justify-center items-center">
             <img className="w-10 object-cover" src={graphics} alt="" />
           </span>
-          , and brand stories{" "}
+          , and brands that turn ideas into impactful digital experiences.{" "}
           <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-10 md:h-8 w-8 h-5 inline-block rounded-full overflow-hidden relative">
             <img
               className="w-full object-cover absolute top-[2px]"
@@ -58,8 +62,7 @@ const About = () => {
               alt=""
             />
           </span>{" "}
-          that carry emotion and leave impact. Every project I take is not just
-          design — it's a way to tell a story beautifully.
+          that engage audiences and leave a lasting impact.
         </p>
       </div>
       {/* Lower Cards */}
@@ -78,9 +81,7 @@ const About = () => {
             <p
               ref={textRef}
               className={`mt-14 lg:text-4xl md:text-2xl text-[2rem] text-right transition-opacity duration-600 bg-gradient-to-r from-[#343434] via-white to-[#343434] 
-  bg-clip-text text-transparent ${
-                isAnimating ? "opacity-0" : "opacity-100"
-              }`}
+  bg-clip-text text-transparent ${isAnimating ? "opacity-0" : "opacity-100"}`}
             >
               {cardData[currentIndex].text}
             </p>
