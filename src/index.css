@@ -18,12 +18,6 @@
   font-weight: normal;
   font-style: normal;
 }
-@font-face {
-  font-family: boldF;
-  src: url("./assets/fonts/novaklasse-semibold.otf") format("opentype");
-  font-weight: normal;
-  font-style: normal;
-}
 
 html{
   scroll-behavior: smooth;
@@ -36,6 +30,10 @@ body{
   cursor: url('./assets/cursor.png'), auto;
 }
 .cta{
+  border: 1px solid #ffffff14;
+  background-color: #20202060;
+}
+.trust{
   border: 1px solid #ffffff14;
 }
 

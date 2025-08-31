@@ -7,7 +7,7 @@ const Cta = ({ text, link }) => {
       {/* CTA */}
       <Link className="mt-8 font-[matter-light]" to={link}>
         <button
-          className="text-white rounded-3xl cursor-pointer flex items-center gap-2 hover:gap-5 transition-all duration-300 backdrop-blur-3xl md:text-base text-[11px] max-w-full overflow-hidden cta bg-[#090909]"
+          className="text-white rounded-3xl cursor-pointer flex items-center gap-2 hover:gap-5 transition-all duration-300  md:text-base text-[16px] max-w-full overflow-hidden cta"
           style={{
             paddingTop: "0.50rem",
             paddingBottom: "0.50rem",

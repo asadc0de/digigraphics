@@ -1,7 +1,7 @@
 import React from "react";
-import work1 from "../assets/work (1).jpg";
-import work2 from "../assets/work (4).jpg";
-import work3 from "../assets/work (3).jpg";
+import project1 from "../assets/pr1.png";
+import project2 from "../assets/pr2.png";
+import project3 from "../assets/pr3.png";
 import Cta from "./Cta";
 
 const Work = () => {
@@ -32,11 +32,11 @@ const Work = () => {
       {/* Container */}
       <section className="mt-14 flex lg:flex-row flex-col justify-center items-center gap-3 px-2">
         {/* Card 1 */}
-        <div className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden">
+        <a href="https://marryingmuslims.vercel.app" className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden flex flex-col items-center justify-center hover:scale-98 transition-transform duration-300 cusror-pointer">
           {/* Image */}
           <img
-            className="w-full h-full object-cover"
-            src={work3}
+            className="object-cover"
+            src={project1}
             alt="Image is loading"
           />
 
@@ -51,13 +51,13 @@ const Work = () => {
             className="absolute bottom-0 left-0 w-full h-24 
                   bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none rounded-b-3xl"
           ></div>
-        </div>
+        </a>
 
         {/* Card 2 */}
-        <div className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden">
+        <a href="https://talentlyglobalnetwork.vercel.app" className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden flex flex-col items-center justify-center hover:scale-98 transition-transform duration-300 cusror-pointer">
           <img
-            className="w-full h-full object-cover"
-            src={work1}
+            className="w-fit object-cover"
+            src={project2}
             alt="Image is loading"
           />
           <div
@@ -68,24 +68,8 @@ const Work = () => {
             className="absolute bottom-0 left-0 w-full h-24 
                   bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none rounded-b-3xl"
           ></div>
-        </div>
+        </a>
 
-        {/* Card 3 */}
-        <div className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden">
-          <img
-            className="w-full h-full object-cover"
-            src={work2}
-            alt="Image is loading"
-          />
-          <div
-            className="absolute inset-0 rounded-3xl 
-                  bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/60 to-transparent"
-          ></div>
-          <div
-            className="absolute bottom-0 left-0 w-full h-24 
-                  bg-gradient-to-t from-[#0a0a0a] to-transparent pointer-events-none rounded-b-3xl"
-          ></div>
-        </div>
       </section>
       {/* Cta */}
       <div className="flex justify-end mt-8 px-2">

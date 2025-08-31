@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import Image from "../assets/logo.png";
 import { useState } from "react";
 
@@ -11,6 +11,7 @@ const Header = () => {
   
 
   const menuItems = [
+    { name: "Projects", href: "/projects" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Work", href: "#work" },
@@ -66,17 +67,31 @@ const Header = () => {
                 <ul className="space-y-6">
                   {menuItems.map((item, index) => (
                     <li key={item.name}>
-                      <a
-                        href={item.href}
-                        onClick={toggleMenu}
-                        className="text-xl font-[boldF] text-white hover:text-[#CDD1D8] transition-all duration-300 block py-3 border-b border-transparent hover:border-[#ffffff14] text-center"
-                        style={{
-                          animationDelay: `${index * 100}ms`,
-                          animation: 'slideInRight 0.5s ease-out forwards'
-                        }}
-                      >
-                        {item.name}
-                      </a>
+                      {item.name === "Projects" ? (
+                        <Link
+                          to={item.href}
+                          onClick={toggleMenu}
+                          className="text-xl font-[neue] text-white hover:text-[#CDD1D8] transition-all duration-300 block py-3 border-b border-transparent hover:border-[#ffffff14] text-center"
+                          style={{
+                            animationDelay: `${index * 100}ms`,
+                            animation: 'slideInRight 0.5s ease-out forwards'
+                          }}
+                        >
+                          {item.name}
+                        </Link>
+                      ) : (
+                        <a
+                          href={item.href}
+                          onClick={toggleMenu}
+                          className="text-xl font-[neue] text-white hover:text-[#CDD1D8] transition-all duration-300 block py-3 border-b border-transparent hover:border-[#ffffff14] text-center"
+                          style={{
+                            animationDelay: `${index * 100}ms`,
+                            animation: 'slideInRight 0.5s ease-out forwards'
+                          }}
+                        >
+                          {item.name}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

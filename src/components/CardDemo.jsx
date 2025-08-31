@@ -1,8 +1,8 @@
 "use client";
 import { animate, motion } from "motion/react";
 import { cn } from "../lib/utils";
-import { GoCopilot } from "react-icons/go";
 import { useEffect } from "react";
+import { stagger } from "motion";
 
 export function CardDemo() {
   return (
@@ -11,171 +11,172 @@ export function CardDemo() {
         <Skeleton />
       </CardSkeletonContainer>
       <CardTitle></CardTitle>
-      <CardDescription>
-      </CardDescription>
+      <CardDescription></CardDescription>
     </Card>
   );
 }
 
 const Skeleton = () => {
-  const scale = [1, 1.1, 1];
-  const transform = ["translateY(0px)", "translateY(-4px)", "translateY(0px)"];
-  const sequence = [
-    [
-      ".circle-1",
-      {
-        scale,
-        transform,
-      },
-      { duration: 0.8 },
-    ],
-    [
-      ".circle-2",
-      {
-        scale,
-        transform,
-      },
-      { duration: 0.8 },
-    ],
-    [
-      ".circle-3",
-      {
-        scale,
-        transform,
-      },
-      { duration: 0.8 },
-    ],
-    [
-      ".circle-4",
-      {
-        scale,
-        transform,
-      },
-      { duration: 0.8 },
-    ],
-    [
-      ".circle-5",
-      {
-        scale,
-        transform,
-      },
-      { duration: 0.8 },
-    ],
-  ];
+const sequence = [
+  // Gentle dust-away effect
+  [
+    [".circle-1", ".circle-2", ".circle-3", ".circle-4", ".circle-5"],
+    {
+      opacity: [1, 0.8, 0.4, 0.1, 0],
+      scale: [1, 0.9, 0.7, 0.4, 0.2],
+      filter: ["blur(0px)", "blur(0.5px)", "blur(1px)", "blur(2px)", "blur(4px)"],
+    },
+    { 
+      duration: .2,
+      delay: stagger(0.15, { from: "random" }), // Random order = more chaotic
+      ease: "easeOut"
+    },
+  ],
 
-  useEffect(() => {
-    animate(sequence, {
-      // @ts-ignore
-      repeat: Infinity,
-      repeatDelay: 1,
-    });
-  }, []);
+  // Pause
+  [".circle-3", {}, { duration: .1 }],
+
+  // Gentle reform
+  [
+    [".circle-1", ".circle-2", ".circle-3", ".circle-4", ".circle-5"],
+    {
+      opacity: [0, 0.2, 0.6, 0.9, 1],
+      scale: [0.2, 0.5, 0.8, 0.95, 1],
+      filter: ["blur(4px)", "blur(2px)", "blur(1px)", "blur(0.3px)", "blur(0px)"],
+    },
+    { 
+      duration: 1.8,
+      delay: stagger(0.12, { from: "center" }), // Reform from center outward
+      ease: "easeInOut"
+    },
+  ],
+];
+
+useEffect(() => {
+  animate(sequence, {
+    repeat: Infinity,
+    repeatDelay: .3, // Long enough for people to go "woooooah"
+  });
+}, []);
   return (
-    <div
-      className="px-4 md:px-8 overflow-hidden h-full relative flex items-center justify-center w-full max-w-full">
+    <div className="px-4 md:px-8 overflow-hidden h-full relative flex items-center justify-center w-full max-w-full">
       <div className="flex flex-row shrink-0 justify-center items-center gap-1 md:gap-2 w-full max-w-full">
         <Container className="h-8 w-8 circle-1">
           {/* Tailwind (was Claude) */}
-          <svg className="h-4 w-4" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 15.5C26.5 11.5 31.5 11.5 34 15.5C36.5 19.5 34 24 29 24C27.5 24 26.5 23.5 25.5 22.5C24.5 21.5 23.5 21 22 21C17 21 14.5 25.5 17 29.5C19.5 33.5 24.5 33.5 27 29.5" stroke="#38BDF8" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="m7.83,11.76h0s-.26,1.15-.26,1.15c-.01.06-.08.11-.15.11h-.32s-.04.02-.05.04c-.29.99-.69,1.68-1.21,2.09-.45.35-1,.51-1.73.51-.66,0-1.1-.21-1.48-.63-.5-.55-.7-1.46-.58-2.55.22-2.05,1.29-4.12,3.34-4.12.62,0,1.11.19,1.45.57.36.41.54,1.02.54,1.82,0,.07-.06.13-.13.13h-1.5c-.05,0-.1-.05-.1-.1-.01-.55-.18-.82-.5-.82-.58,0-.91.78-1.09,1.21-.25.6-.38,1.26-.35,1.92.01.3.06.73.35.91.26.16.62.05.84-.12.22-.17.4-.48.47-.75.01-.04.01-.07,0-.08-.01-.01-.04-.02-.06-.02h-.39s-.08-.02-.11-.05c-.02-.02-.03-.06-.02-.09l.26-1.14c.01-.06.07-.1.13-.11h0s2.53,0,2.53,0c0,0,.01,0,.02,0,.07,0,.11.07.11.14h0Z"></path>
+            <path d="m12.18,10.45c0,.07-.06.13-.13.13h-1.38c-.09,0-.17-.07-.17-.16,0-.4-.14-.6-.42-.6s-.47.18-.47.48c0,.34.19.65.74,1.18.72.68,1.01,1.28,1,2.08-.02,1.29-.9,2.12-2.23,2.12-.68,0-1.2-.18-1.54-.54-.35-.36-.51-.9-.48-1.59,0-.07.06-.13.13-.13h1.43s.08.02.1.05c.02.03.03.06.03.09-.02.25.03.43.13.54.06.07.15.1.26.1.26,0,.42-.19.42-.51,0-.28-.08-.53-.57-1.03-.63-.61-1.19-1.24-1.17-2.23.01-.58.24-1.1.64-1.48.43-.4,1.01-.61,1.69-.61.68,0,1.2.2,1.53.58.32.36.47.88.46,1.54h0Z"></path>
+            <path d="m16.47,15.43v-6.84c.01-.07-.05-.13-.12-.13,0,0,0,0,0,0h-2.14c-.07,0-.1.06-.12.1l-3.1,6.82h0s0,0,0,0c-.03.08.03.17.12.17h1.5c.08,0,.13-.02.16-.08l.3-.71c.04-.09.04-.1.15-.1h1.43c.1,0,.1,0,.1.1l-.03.66c0,.07.06.13.13.13,0,0,0,0,0,0h1.51s.07-.02.1-.04c.02-.02.03-.06.03-.09Zm-2.65-2.28s-.02,0-.03,0c-.02,0-.03-.02-.03-.04,0,0,0,0,0,0,0-.01,0-.02.01-.04l1.07-2.65s.02-.05.03-.08c.02-.04.04-.04.05-.01,0,.02-.12,2.72-.12,2.72-.01.1-.01.11-.11.11h-.86s0-.01,0-.01h0s0,0,0,0Z"></path>
+            <path d="m19.51,8.46h-1.14c-.06,0-.13.03-.14.1l-1.58,6.86s0,.06.02.09c.03.03.07.05.11.05h1.42c.08,0,.13-.04.14-.1,0,0,.17-.78.17-.78.01-.06,0-.11-.06-.14-.03-.01-.05-.03-.08-.04l-.25-.13-.24-.13-.09-.05s-.03-.02-.02-.04c0-.03.02-.05.05-.05h.78c.23,0,.47-.01.69-.05,1.61-.3,2.68-1.59,2.71-3.34.03-1.5-.81-2.26-2.48-2.26,0,0,0,0,0,0Zm-.39,4.08h-.03c-.07,0-.08,0-.08,0,0,0,.45-1.98.45-1.98.01-.06.01-.09-.02-.11-.05-.02-.7-.37-.7-.37-.02,0-.03-.02-.02-.04,0-.03.02-.05.05-.05h1.04c.32,0,.5.3.49.79-.01.85-.42,1.74-1.17,1.77h0Z"></path>
+          </svg>
         </Container>
         <Container className="h-12 w-12 circle-2">
           {/* Node.js (was Illustrator) */}
-          <svg className="h-6 w-6" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4L44 14V34L24 44L4 34V14L24 4Z" fill="#8CC84B"/><path d="M24 4L44 14V34L24 44L4 34V14L24 4Z" stroke="#333" strokeWidth="2" strokeLinejoin="round"/><path d="M19 31V21L24 18L29 21V31" stroke="#333" strokeWidth="2" strokeLinejoin="round"/><path d="M24 18V31" stroke="#333" strokeWidth="2" strokeLinejoin="round"/></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32"
+            width="1em"
+            height="1em"
+            className="h-6 w-6"
+          >
+            <path
+              fill="currentColor"
+              d="M15.994 3c-.365 0-.73.09-1.045.27L5.04 8.99C4.4 9.36 4 10.06 4 10.8v10.38c0 .75.4 1.44 1.04 1.81l2.6 1.5c1.26.62 1.71.62 2.28.62c1.87 0 2.94-1.13 2.94-3.09V11.31a.29.29 0 0 0-.29-.29h-1.25a.286.286 0 0 0-.29.29v10.7c0 .88-.91 1.74-2.38 1.01l-2.72-1.57a.3.3 0 0 1-.16-.27V10.81c0-.12.06-.22.16-.28l9.91-5.72a.29.29 0 0 1 .31 0l9.91 5.72c.1.06.16.16.16.27v10.38c0 .11-.06.22-.15.27l-9.92 5.73a.34.34 0 0 1-.31 0l-2.55-1.51a.23.23 0 0 0-.24-.02c-.71.4-.84.45-1.5.68c-.16.05-.41.15.09.43l3.31 1.96c.32.18.68.28 1.04.28c.37 0 .73-.1 1.05-.28l9.92-5.73c.64-.37 1.04-1.06 1.04-1.81V10.81c0-.75-.4-1.44-1.04-1.81l-9.92-5.73c-.316-.18-.68-.27-1.046-.27m2.666 8.006c-2.83 0-4.52 1.2-4.52 3.2c0 2.17 1.68 2.768 4.4 3.038c3.25.32 3.5.802 3.5 1.442c0 1.1-.89 1.57-2.98 1.57c-2.63 0-3.21-.661-3.4-1.961a.28.28 0 0 0-.28-.24h-1.29a.28.28 0 0 0-.28.28c0 1.67.91 3.66 5.25 3.66c3.14 0 4.94-1.24 4.94-3.4c0-2.14-1.45-2.71-4.49-3.12c-3.09-.4-3.4-.61-3.4-1.33c0-.6.27-1.39 2.55-1.39c2.03 0 2.79.44 3.1 1.81c.03.13.14.23.28.23h1.29c.08 0 .15-.04.21-.1a.27.27 0 0 0 .07-.22c-.2-2.36-1.77-3.47-4.95-3.47z"
+            ></path>
+          </svg>
         </Container>
         <Container className="circle-3">
           {/* React (was Photoshop) */}
-          <svg className="h-8 w-8 dark:text-white" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="4" fill="#61DAFB"/><ellipse cx="24" cy="24" rx="20" ry="8" stroke="#61DAFB" strokeWidth="2"/><ellipse cx="24" cy="24" rx="8" ry="20" stroke="#61DAFB" strokeWidth="2"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(60 24 24)" stroke="#61DAFB" strokeWidth="2"/><ellipse cx="24" cy="24" rx="20" ry="8" transform="rotate(120 24 24)" stroke="#61DAFB" strokeWidth="2"/></svg>
+          <svg
+            className="h-8 w-8 dark:text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 128 128"
+            width="1em"
+            height="1em"
+          >
+            <g fill="#dadada">
+              <circle cx="64" cy="64" r="11.4"></circle>
+              <path d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3c.6-2.4 1.1-4.8 1.5-7.1c2.1-13.2-.2-22.5-6.6-26.1c-1.9-1.1-4-1.6-6.4-1.6c-7 0-15.9 5.2-24.9 13.9c-9-8.7-17.9-13.9-24.9-13.9c-2.4 0-4.5.5-6.4 1.6c-6.4 3.7-8.7 13-6.6 26.1c.4 2.3.9 4.7 1.5 7.1c-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3c-.6 2.4-1.1 4.8-1.5 7.1c-2.1 13.2.2 22.5 6.6 26.1c1.9 1.1 4 1.6 6.4 1.6c7.1 0 16-5.2 24.9-13.9c9 8.7 17.9 13.9 24.9 13.9c2.4 0 4.5-.5 6.4-1.6c6.4-3.7 8.7-13 6.6-26.1c-.4-2.3-.9-4.7-1.5-7.1c2.4-.7 4.7-1.4 6.9-2.3c12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3c-.3 2.1-.8 4.3-1.4 6.6c-5.2-1.2-10.7-2-16.5-2.5c-3.4-4.8-6.9-9.1-10.4-13c7.4-7.3 14.9-12.3 21-12.3c1.3 0 2.5.3 3.5.9zM81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6c-3.7.3-7.4.4-11.2.4c-3.9 0-7.6-.1-11.2-.4c-2.2-3.2-4.2-6.4-6-9.6c-1.9-3.3-3.7-6.7-5.3-10c1.6-3.3 3.4-6.7 5.3-10c1.8-3.2 3.9-6.4 6.1-9.6c3.7-.3 7.4-.4 11.2-.4c3.9 0 7.6.1 11.2.4c2.2 3.2 4.2 6.4 6 9.6c1.9 3.3 3.7 6.7 5.3 10c-1.7 3.3-3.4 6.6-5.3 10zm8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3c-3.4.8-7 1.4-10.8 1.9c1.2-1.9 2.5-3.9 3.6-6c1.2-2.1 2.3-4.2 3.4-6.2zM64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3c2.3.1 4.6.2 6.9.2c2.3 0 4.6-.1 6.9-.2c-2.2 2.9-4.5 5.7-6.9 8.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9c1.1-3.3 2.3-6.8 3.8-10.3c1.1 2 2.2 4.1 3.4 6.1c1.2 2.2 2.4 4.1 3.6 6.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3c3.4-.8 7-1.4 10.8-1.9c-1.2 1.9-2.5 3.9-3.6 6c-1.2 2.1-2.3 4.2-3.4 6.2zM64 30.2c2.4 2.6 4.7 5.4 6.9 8.3c-2.3-.1-4.6-.2-6.9-.2c-2.3 0-4.6.1-6.9.2c2.2-2.9 4.5-5.7 6.9-8.3zm22.2 21l-3.6-6c3.8.5 7.4 1.1 10.8 1.9c-1.1 3.3-2.3 6.8-3.8 10.3c-1.1-2.1-2.2-4.2-3.4-6.2zM31.7 35c-1.7-10.5-.3-17.9 3.8-20.3c1-.6 2.2-.9 3.5-.9c6 0 13.5 4.9 21 12.3c-3.5 3.8-7 8.2-10.4 13c-5.8.5-11.3 1.4-16.5 2.5c-.6-2.3-1-4.5-1.4-6.6zM7 64c0-4.7 5.7-9.7 15.7-13.4c2-.8 4.2-1.5 6.4-2.1c1.6 5 3.6 10.3 6 15.6c-2.4 5.3-4.5 10.5-6 15.5C15.3 75.6 7 69.6 7 64zm28.5 49.3c-4.1-2.4-5.5-9.8-3.8-20.3c.3-2.1.8-4.3 1.4-6.6c5.2 1.2 10.7 2 16.5 2.5c3.4 4.8 6.9 9.1 10.4 13c-7.4 7.3-14.9 12.3-21 12.3c-1.3 0-2.5-.3-3.5-.9zM96.3 93c1.7 10.5.3 17.9-3.8 20.3c-1 .6-2.2.9-3.5.9c-6 0-13.5-4.9-21-12.3c3.5-3.8 7-8.2 10.4-13c5.8-.5 11.3-1.4 16.5-2.5c.6 2.3 1 4.5 1.4 6.6zm9-15.6c-2 .8-4.2 1.5-6.4 2.1c-1.6-5-3.6-10.3-6-15.6c2.4-5.3 4.5-10.5 6-15.5c13.8 4 22.1 10 22.1 15.6c0 4.7-5.8 9.7-15.7 13.4z"></path>
+            </g>
+          </svg>
         </Container>
         <Container className="h-12 w-12 circle-4">
           {/* Express (was Canva) */}
-          <svg className="h-6 w-6" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="24" cy="24" rx="20" ry="8" stroke="#000" strokeWidth="2"/><text x="24" y="28" textAnchor="middle" fontSize="12" fill="#000">Express</text></svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="1em"
+            height="1em"
+            className="h-6 w-6"
+          >
+            <path
+              fill="currentColor"
+              d="M12 4.86q-4.76 0-5.95 4.76q1.785-2.38 4.165-1.785c.905.226 1.552.883 2.268 1.61C13.651 10.63 15 12 17.95 12q4.76 0 5.95-4.76q-1.785 2.38-4.165 1.785c-.906-.226-1.552-.883-2.27-1.61C16.3 6.23 14.95 4.86 12 4.86M6.05 12Q1.29 12 .1 16.76q1.785-2.38 4.165-1.785c.905.226 1.552.883 2.269 1.61C7.7 17.77 9.05 19.14 12 19.14q4.76 0 5.95-4.76q-1.785 2.38-4.165 1.785c-.906-.226-1.552-.883-2.27-1.61C10.35 13.37 9 12 6.05 12"
+            ></path>
+          </svg>
         </Container>
         <Container className="h-8 w-8 circle-5">
           {/* JavaScript (was Gemini) */}
-          <svg className="h-4 w-4" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="8" fill="#F7DF1E"/><text x="24" y="32" textAnchor="middle" fontSize="18" fill="#000">JS</text></svg>
+          <svg
+            className="h-4 w-4"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="1em"
+            height="1em"
+          >
+            <path
+              fill="currentColor"
+              d="M6 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zm7.334 13.055q1.08.87 2.156.858q.66 0 1.012-.242a.75.75 0 0 0 .341-.66a.97.97 0 0 0-.34-.748q-.352-.307-1.332-.616q-1.177-.34-1.815-.88q-.626-.54-.638-1.507q0-.913.792-1.529q.77-.616 1.97-.616q1.672 0 2.683.814l-.77 1.199a2.6 2.6 0 0 0-.935-.462a3.2 3.2 0 0 0-.946-.165q-.57 0-.913.209q-.34.21-.34.55q0 .374.417.638q.42.254 1.43.561q1.221.363 1.738.968t.517 1.54q0 .957-.737 1.65q-.726.682-2.112.715q-1.815 0-3.036-1.089zm-5.53.638q.352.22.847.22q.517 0 .858-.297q.34-.308.341-1.067v-5.302h1.485v5.588q-.033 1.298-.748 1.87a2.5 2.5 0 0 1-.891.484a3.3 3.3 0 0 1-.935.143q-.825 0-1.463-.286q-.682-.307-1.144-1.089l1.034-.847q.285.385.616.583"
+            ></path>
+          </svg>
         </Container>
       </div>
-      <div
-        className="h-40 w-px absolute top-20 m-auto z-40 bg-gradient-to-b from-transparent via-cyan-500 to-transparent animate-move">
-        <div className="w-10 h-32 top-1/2 -translate-y-1/2 absolute -left-10">
-          <Sparkles />
-        </div>
-      </div>
-    </div>
-  );
-};
-const Sparkles = () => {
-  const randomMove = () => Math.random() * 2 - 1;
-  const randomOpacity = () => Math.random();
-  const random = () => Math.random();
-  return (
-    <div className="absolute top-0 left-0 inset-0">
-      {[...Array(12)].map((_, i) => (
-        <motion.span
-          key={`star-${i}`}
-          animate={{
-            top: `calc(${random() * 100}% + ${randomMove()}px)`,
-            left: `calc(${random() * 100}% + ${randomMove()}px)`,
-            opacity: randomOpacity(),
-            scale: [1, 1.2, 0],
-          }}
-          transition={{
-            duration: random() * 2 + 4,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          style={{
-            position: "absolute",
-            top: `${random() * 100}%`,
-            left: `${random() * 100}%`,
-            width: `2px`,
-            height: `2px`,
-            borderRadius: "50%",
-            zIndex: 1,
-          }}
-          className="inline-block bg-black dark:bg-white"></motion.span>
-      ))}
+    
     </div>
   );
 };
 
-export const Card = ({
-  className,
-  children
-}) => {
+
+export const Card = ({ className, children }) => {
   return (
     <div
       className={cn(
         "max-w-sm w-full mx-auto px-8 rounded-xl  group",
         className
-      )}>
+      )}
+    >
       {children}
     </div>
   );
 };
 
-export const CardTitle = ({
-  children,
-  className
-}) => {
+export const CardTitle = ({ children, className }) => {
   return (
     <h3
-      className={cn("text-lg font-semibold text-gray-800 dark:text-white py-2", className)}>
+      className={cn(
+        "text-lg font-semibold text-gray-800 dark:text-white py-2",
+        className
+      )}
+    >
       {children}
     </h3>
   );
 };
 
-export const CardDescription = ({
-  children,
-  className
-}) => {
+export const CardDescription = ({ children, className }) => {
   return (
     <p
       className={cn(
         "text-sm font-normal text-neutral-600 dark:text-neutral-400 max-w-sm",
         className
-      )}>
+      )}
+    >
       {children}
     </p>
   );
@@ -185,21 +186,23 @@ export const CardDescription = ({
 export const CardSkeletonContainer = ({
   className,
   children,
-  showGradient = true
+  showGradient = true,
 }) => {
   return (
     <div
-      className={cn("h-[16rem] md:h-[5rem] rounded-xl z-40", className, showGradient &&
-        "bg- dark:bg-[] [mask-image:radial-gradient(50%_50%_at_50%_50%,white_0%,transparent_100%)]")}>
+      className={cn(
+        "h-[16rem] md:h-[5rem] rounded-xl z-40",
+        className,
+        showGradient &&
+          "bg- dark:bg-[] [mask-image:radial-gradient(50%_50%_at_50%_50%,white_0%,transparent_100%)]"
+      )}
+    >
       {children}
     </div>
   );
 };
 
-const Container = ({
-  className,
-  children
-}) => {
+const Container = ({ className, children }) => {
   return (
     <div
       className={cn(
@@ -207,15 +210,14 @@ const Container = ({
     shadow-[0px_0px_8px_0px_rgba(248,248,248,0.25)_inset,0px_32px_24px_-16px_rgba(0,0,0,0.40)]
     `,
         className
-      )}>
+      )}
+    >
       {children}
     </div>
   );
 };
 
-export const ClaudeLogo = ({
-  className
-}) => {
+export const ClaudeLogo = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -225,44 +227,46 @@ export const ClaudeLogo = ({
       fillRule="evenodd"
       clipRule="evenodd"
       viewBox="0 0 512 512"
-      className={className}>
+      className={className}
+    >
       <rect fill="#CC9B7A" width="512" height="512" rx="104.187" ry="105.042" />
       <path
         fill="#1F1F1E"
         fillRule="nonzero"
-        d="M318.663 149.787h-43.368l78.952 212.423 43.368.004-78.952-212.427zm-125.326 0l-78.952 212.427h44.255l15.932-44.608 82.846-.004 16.107 44.612h44.255l-79.126-212.427h-45.317zm-4.251 128.341l26.91-74.701 27.083 74.701h-53.993z" />
+        d="M318.663 149.787h-43.368l78.952 212.423 43.368.004-78.952-212.427zm-125.326 0l-78.952 212.427h44.255l15.932-44.608 82.846-.004 16.107 44.612h44.255l-79.126-212.427h-45.317zm-4.251 128.341l26.91-74.701 27.083 74.701h-53.993z"
+      />
     </svg>
   );
 };
 
-export const OpenAILogo = ({
-  className
-}) => {
+export const OpenAILogo = ({ className }) => {
   return (
     <svg
       className={className}
       width="28"
       viewBox="0 0 28 28"
       fill="none"
-      xmlns="http://www.w3.org/2000/svg">
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M26.153 11.46a6.888 6.888 0 0 0-.608-5.73 7.117 7.117 0 0 0-3.29-2.93 7.238 7.238 0 0 0-4.41-.454 7.065 7.065 0 0 0-2.41-1.742A7.15 7.15 0 0 0 12.514 0a7.216 7.216 0 0 0-4.217 1.346 7.061 7.061 0 0 0-2.603 3.539 7.12 7.12 0 0 0-2.734 1.188A7.012 7.012 0 0 0 .966 8.268a6.979 6.979 0 0 0 .88 8.273 6.89 6.89 0 0 0 .607 5.729 7.117 7.117 0 0 0 3.29 2.93 7.238 7.238 0 0 0 4.41.454 7.061 7.061 0 0 0 2.409 1.742c.92.404 1.916.61 2.923.604a7.215 7.215 0 0 0 4.22-1.345 7.06 7.06 0 0 0 2.605-3.543 7.116 7.116 0 0 0 2.734-1.187 7.01 7.01 0 0 0 1.993-2.196 6.978 6.978 0 0 0-.884-8.27Zm-10.61 14.71c-1.412 0-2.505-.428-3.46-1.215.043-.023.119-.064.168-.094l5.65-3.22a.911.911 0 0 0 .464-.793v-7.86l2.389 1.36a.087.087 0 0 1 .046.065v6.508c0 2.952-2.491 5.248-5.257 5.248ZM4.062 21.354a5.17 5.17 0 0 1-.635-3.516c.042.025.115.07.168.1l5.65 3.22a.928.928 0 0 0 .928 0l6.898-3.93v2.72a.083.083 0 0 1-.034.072l-5.711 3.255a5.386 5.386 0 0 1-4.035.522 5.315 5.315 0 0 1-3.23-2.443ZM2.573 9.184a5.283 5.283 0 0 1 2.768-2.301V13.515a.895.895 0 0 0 .464.793l6.897 3.93-2.388 1.36a.087.087 0 0 1-.08.008L4.52 16.349a5.262 5.262 0 0 1-2.475-3.185 5.192 5.192 0 0 1 .527-3.98Zm19.623 4.506-6.898-3.93 2.388-1.36a.087.087 0 0 1 .08-.008l5.713 3.255a5.28 5.28 0 0 1 2.054 2.118 5.19 5.19 0 0 1-.488 5.608 5.314 5.314 0 0 1-2.39 1.742v-6.633a.896.896 0 0 0-.459-.792Zm2.377-3.533a7.973 7.973 0 0 0-.168-.099l-5.65-3.22a.93.93 0 0 0-.928 0l-6.898 3.93V8.046a.083.083 0 0 1 .034-.072l5.712-3.251a5.375 5.375 0 0 1 5.698.241 5.262 5.262 0 0 1 1.865 2.28c.39.92.506 1.93.335 2.913ZM9.631 15.009l-2.39-1.36a.083.083 0 0 1-.046-.065V7.075c.001-.997.29-1.973.832-2.814a5.297 5.297 0 0 1 2.231-1.935 5.382 5.382 0 0 1 5.659.72 4.89 4.89 0 0 0-.168.093l-5.65 3.22a.913.913 0 0 0-.465.793l-.003 7.857Zm1.297-2.76L14 10.5l3.072 1.75v3.5L14 17.499l-3.072-1.75v-3.5Z"
-        fill="currentColor"></path>
+        fill="currentColor"
+      ></path>
     </svg>
   );
 };
-export const GeminiLogo = ({
-  className
-}) => {
+export const GeminiLogo = ({ className }) => {
   return (
     <svg
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
-      className={className}>
+      className={className}
+    >
       <path
         d="M16 8.016A8.522 8.522 0 008.016 16h-.032A8.521 8.521 0 000 8.016v-.032A8.521 8.521 0 007.984 0h.032A8.522 8.522 0 0016 7.984v.032z"
-        fill="url(#prefix__paint0_radial_980_20147)" />
+        fill="url(#prefix__paint0_radial_980_20147)"
+      />
       <defs>
         <radialGradient
           id="prefix__paint0_radial_980_20147"
@@ -270,7 +274,8 @@ export const GeminiLogo = ({
           cy="0"
           r="1"
           gradientUnits="userSpaceOnUse"
-          gradientTransform="matrix(16.1326 5.4553 -43.70045 129.2322 1.588 6.503)">
+          gradientTransform="matrix(16.1326 5.4553 -43.70045 129.2322 1.588 6.503)"
+        >
           <stop offset=".067" stop-color="#9168C0" />
           <stop offset=".343" stop-color="#5684D1" />
           <stop offset=".672" stop-color="#1BA1E3" />
@@ -280,18 +285,76 @@ export const GeminiLogo = ({
   );
 };
 
-export const MetaIconOutline = ({
-  className
-}) => {
+export const MetaIconOutline = ({ className }) => {
   return (
-        <svg viewBox="0 0 508 508" xmlns="http://www.w3.org/2000/svg" fillRule="evenodd" clipRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" className={className}>
-          <g transform="matrix(.26718 0 0 .26718 0 0)"><circle cx="950" cy="950" r="950" fill="#7d2ae7"/><circle cx="950" cy="950" r="950" fill="url(#prefix___Radial1)"/><circle cx="950" cy="950" r="950" fill="url(#prefix___Radial2)"/><circle cx="950" cy="950" r="950" fill="url(#prefix___Radial3)"/><circle cx="950" cy="950" r="950" fill="url(#prefix___Radial4)"/></g><path d="M446.744 276.845c-.665 0-1.271.43-1.584 1.33-4.011 11.446-9.43 18.254-13.891 18.254-2.563 0-3.6-2.856-3.6-7.336 0-11.21 6.71-34.982 10.095-45.82.392-1.312.646-2.485.646-3.483 0-3.15-1.722-4.696-5.987-4.696-4.598 0-9.547 1.8-14.36 10.233-1.663-7.435-6.691-10.683-13.715-10.683-8.12 0-15.965 5.224-22.421 13.696-6.456 8.471-14.048 11.25-19.76 9.88 4.108-10.057 5.634-17.57 5.634-23.145 0-8.746-4.324-14.028-11.308-14.028-10.624 0-16.747 10.134-16.747 20.797 0 8.237 3.736 16.708 11.954 20.817-6.887 15.573-16.943 29.66-20.758 29.66-4.93 0-6.379-24.123-6.105-41.38.176-9.9.998-10.408.998-13.401 0-1.722-1.115-2.896-5.595-2.896-10.448 0-13.676 8.844-14.165 18.998a50.052 50.052 0 01-1.8 11.406c-4.363 15.573-13.363 27.39-19.232 27.39-2.72 0-3.463-2.72-3.463-6.28 0-11.21 6.28-25.219 6.28-37.173 0-8.784-3.854-14.34-11.112-14.34-8.55 0-19.858 10.173-30.56 29.229 3.521-14.595 4.97-28.721-5.459-28.721a14.115 14.115 0 00-6.476 1.683 3.689 3.689 0 00-2.113 3.56c.998 15.535-12.521 55.329-25.336 55.329-2.328 0-3.463-2.524-3.463-6.593 0-11.23 6.691-34.943 10.056-45.801.43-1.409.666-2.622.666-3.678 0-2.974-1.84-4.5-6.007-4.5-4.578 0-9.547 1.741-14.34 10.174-1.683-7.435-6.711-10.683-13.735-10.683-11.523 0-24.397 12.19-30.051 28.076-7.572 21.208-22.832 41.692-43.375 41.692-18.645 0-28.486-15.515-28.486-40.03 0-35.392 25.982-64.308 45.253-64.308 9.215 0 13.617 5.869 13.617 14.869 0 10.897-6.085 15.964-6.085 20.112 0 1.272 1.057 2.524 3.15 2.524 8.374 0 18.234-9.841 18.234-23.262 0-13.422-10.897-23.243-30.168-23.243-31.851 0-63.898 32.047-63.898 73.113 0 32.673 16.121 52.374 44 52.374 19.017 0 35.628-14.79 44.588-32.047 1.018 14.302 7.513 21.776 17.413 21.776 8.804 0 15.925-5.243 21.364-14.458 2.094 9.645 7.65 14.36 14.87 14.36 8.275 0 15.201-5.243 21.794-14.986-.097 7.65 1.644 14.85 8.276 14.85 3.13 0 6.867-.725 7.533-3.464 6.984-28.877 24.24-52.453 29.523-52.453 1.565 0 1.995 1.507 1.995 3.287 0 7.846-5.537 23.928-5.537 34.2 0 11.092 4.716 18.43 14.459 18.43 10.8 0 21.775-13.227 29.092-32.556 2.29 18.058 7.24 32.633 14.987 32.633 9.508 0 26.392-20.014 36.625-41.203 4.01.509 10.036.372 15.827-3.717-2.465 6.241-3.912 13.07-3.912 19.897 0 19.663 9.39 25.18 17.47 25.18 8.785 0 15.907-5.243 21.365-14.458 1.8 8.315 6.398 14.34 14.85 14.34 13.225 0 24.71-13.519 24.71-24.612 0-2.934-1.252-4.715-2.72-4.715zm-274.51 18.547c-5.342 0-7.435-5.38-7.435-13.401 0-13.93 9.528-37.193 19.604-37.193 4.402 0 6.065 5.185 6.065 11.524 0 14.145-9.059 39.07-18.235 39.07zm182.948-41.574c-3.189-3.796-4.343-8.961-4.343-13.559 0-5.673 2.074-10.467 4.558-10.467 2.485 0 3.248 2.446 3.248 5.85 0 5.693-2.035 14.008-3.463 18.176zm41.418 41.574c-5.34 0-7.434-6.182-7.434-13.401 0-13.441 9.528-37.193 19.682-37.193 4.402 0 5.967 5.146 5.967 11.524 0 14.145-8.902 39.07-18.215 39.07z" fill="#fff" fillRule="nonzero"/>
-          <defs>
-            <radialGradient id="prefix___Radial1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="scale(1469.491) rotate(-49.416 1.37 .302)"><stop offset="0" stopColor="#6420ff"/><stop offset="1" stopColor="#6420ff" stopOpacity="0"/></radialGradient>
-            <radialGradient id="prefix___Radial2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="rotate(54.703 42.717 594.194) scale(1657.122)"><stop offset="0" stopColor="#00c4cc"/><stop offset="1" stopColor="#00c4cc" stopOpacity="0"/></radialGradient>
-            <radialGradient id="prefix___Radial3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1023 -1030 473.711 470.491 367 1684)"><stop offset="0" stopColor="#6420ff"/><stop offset="1" stopColor="#6420ff" stopOpacity="0"/></radialGradient>
-            <radialGradient id="prefix___Radial4" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(595.999 1372 -2298.41 998.431 777 256)"><stop offset="0" stopColor="#00c4cc" stopOpacity=".73"/><stop offset="0" stopColor="#00c4cc"/><stop offset="1" stopColor="#00c4cc" stopOpacity="0"/></radialGradient>
-          </defs>
-  </svg>
+    <svg
+      viewBox="0 0 508 508"
+      xmlns="http://www.w3.org/2000/svg"
+      fillRule="evenodd"
+      clipRule="evenodd"
+      strokeLinejoin="round"
+      strokeMiterlimit="2"
+      className={className}
+    >
+      <g transform="matrix(.26718 0 0 .26718 0 0)">
+        <circle cx="950" cy="950" r="950" fill="#7d2ae7" />
+        <circle cx="950" cy="950" r="950" fill="url(#prefix___Radial1)" />
+        <circle cx="950" cy="950" r="950" fill="url(#prefix___Radial2)" />
+        <circle cx="950" cy="950" r="950" fill="url(#prefix___Radial3)" />
+        <circle cx="950" cy="950" r="950" fill="url(#prefix___Radial4)" />
+      </g>
+      <path
+        d="M446.744 276.845c-.665 0-1.271.43-1.584 1.33-4.011 11.446-9.43 18.254-13.891 18.254-2.563 0-3.6-2.856-3.6-7.336 0-11.21 6.71-34.982 10.095-45.82.392-1.312.646-2.485.646-3.483 0-3.15-1.722-4.696-5.987-4.696-4.598 0-9.547 1.8-14.36 10.233-1.663-7.435-6.691-10.683-13.715-10.683-8.12 0-15.965 5.224-22.421 13.696-6.456 8.471-14.048 11.25-19.76 9.88 4.108-10.057 5.634-17.57 5.634-23.145 0-8.746-4.324-14.028-11.308-14.028-10.624 0-16.747 10.134-16.747 20.797 0 8.237 3.736 16.708 11.954 20.817-6.887 15.573-16.943 29.66-20.758 29.66-4.93 0-6.379-24.123-6.105-41.38.176-9.9.998-10.408.998-13.401 0-1.722-1.115-2.896-5.595-2.896-10.448 0-13.676 8.844-14.165 18.998a50.052 50.052 0 01-1.8 11.406c-4.363 15.573-13.363 27.39-19.232 27.39-2.72 0-3.463-2.72-3.463-6.28 0-11.21 6.28-25.219 6.28-37.173 0-8.784-3.854-14.34-11.112-14.34-8.55 0-19.858 10.173-30.56 29.229 3.521-14.595 4.97-28.721-5.459-28.721a14.115 14.115 0 00-6.476 1.683 3.689 3.689 0 00-2.113 3.56c.998 15.535-12.521 55.329-25.336 55.329-2.328 0-3.463-2.524-3.463-6.593 0-11.23 6.691-34.943 10.056-45.801.43-1.409.666-2.622.666-3.678 0-2.974-1.84-4.5-6.007-4.5-4.578 0-9.547 1.741-14.34 10.174-1.683-7.435-6.711-10.683-13.735-10.683-11.523 0-24.397 12.19-30.051 28.076-7.572 21.208-22.832 41.692-43.375 41.692-18.645 0-28.486-15.515-28.486-40.03 0-35.392 25.982-64.308 45.253-64.308 9.215 0 13.617 5.869 13.617 14.869 0 10.897-6.085 15.964-6.085 20.112 0 1.272 1.057 2.524 3.15 2.524 8.374 0 18.234-9.841 18.234-23.262 0-13.422-10.897-23.243-30.168-23.243-31.851 0-63.898 32.047-63.898 73.113 0 32.673 16.121 52.374 44 52.374 19.017 0 35.628-14.79 44.588-32.047 1.018 14.302 7.513 21.776 17.413 21.776 8.804 0 15.925-5.243 21.364-14.458 2.094 9.645 7.65 14.36 14.87 14.36 8.275 0 15.201-5.243 21.794-14.986-.097 7.65 1.644 14.85 8.276 14.85 3.13 0 6.867-.725 7.533-3.464 6.984-28.877 24.24-52.453 29.523-52.453 1.565 0 1.995 1.507 1.995 3.287 0 7.846-5.537 23.928-5.537 34.2 0 11.092 4.716 18.43 14.459 18.43 10.8 0 21.775-13.227 29.092-32.556 2.29 18.058 7.24 32.633 14.987 32.633 9.508 0 26.392-20.014 36.625-41.203 4.01.509 10.036.372 15.827-3.717-2.465 6.241-3.912 13.07-3.912 19.897 0 19.663 9.39 25.18 17.47 25.18 8.785 0 15.907-5.243 21.365-14.458 1.8 8.315 6.398 14.34 14.85 14.34 13.225 0 24.71-13.519 24.71-24.612 0-2.934-1.252-4.715-2.72-4.715zm-274.51 18.547c-5.342 0-7.435-5.38-7.435-13.401 0-13.93 9.528-37.193 19.604-37.193 4.402 0 6.065 5.185 6.065 11.524 0 14.145-9.059 39.07-18.235 39.07zm182.948-41.574c-3.189-3.796-4.343-8.961-4.343-13.559 0-5.673 2.074-10.467 4.558-10.467 2.485 0 3.248 2.446 3.248 5.85 0 5.693-2.035 14.008-3.463 18.176zm41.418 41.574c-5.34 0-7.434-6.182-7.434-13.401 0-13.441 9.528-37.193 19.682-37.193 4.402 0 5.967 5.146 5.967 11.524 0 14.145-8.902 39.07-18.215 39.07z"
+        fill="#fff"
+        fillRule="nonzero"
+      />
+      <defs>
+        <radialGradient
+          id="prefix___Radial1"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          // gradientTransform="scale(1469.491) rotate(-49.416 1.37 .302)"
+        >
+          <stop offset="0" stopColor="#6420ff" />
+          <stop offset="1" stopColor="#6420ff" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient
+          id="prefix___Radial2"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          // gradientTransform="rotate(54.703 42.717 594.194) scale(1657.122)"
+        >
+          <stop offset="0" stopColor="#00c4cc" />
+          <stop offset="1" stopColor="#00c4cc" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient
+          id="prefix___Radial3"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="matrix(1023 -1030 473.711 470.491 367 1684)"
+        >
+          <stop offset="0" stopColor="#6420ff" />
+          <stop offset="1" stopColor="#6420ff" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient
+          id="prefix___Radial4"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientUnits="userSpaceOnUse"
+          gradientTransform="matrix(595.999 1372 -2298.41 998.431 777 256)"
+        >
+          <stop offset="0" stopColor="#00c4cc" stopOpacity=".73" />
+          <stop offset="0" stopColor="#00c4cc" />
+          <stop offset="1" stopColor="#00c4cc" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+    </svg>
   );
 };
