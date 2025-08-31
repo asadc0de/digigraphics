@@ -1,6 +1,7 @@
 import Header from "../components/Header";
+import { useEffect, useLayoutEffect } from "react";
 import gradient from "../assets/gr bg.png";
-import gradientMobile from "../assets/gr bg mobile.png";
+import grmb from "../assets/gr mb.png";
 import project1 from "../assets/pr1.png";
 import project2 from "../assets/pr2.png";
 import project3 from "../assets/pr3.png";
@@ -55,6 +56,12 @@ const projects = [
 ];
 
 const Projects = () => {
+
+ useEffect(() => {
+    window.scrollTo(0, 0);
+ }, [])
+ 
+  
   // Helper to chunk the projects array into groups of 2
   const chunkedProjects = [];
   for (let i = 0; i < projects.length; i += 2) {
@@ -69,13 +76,13 @@ const Projects = () => {
         <div className="absolute hidden md:block left-1/2 -top-18 -translate-x-1/2 w-[80%] -z-100">
           <img src={gradient} alt="gradient" />
         </div>
-        <div className="absolute md:hidden right-0 top-0 w-full h-screen -z-100">
-          <img src={gradientMobile} alt="gradient" />
+        <div className="absolute md:hidden right-0 -top-40 w-full h-screen -z-100">
+          <img className="w-full h-full object-cover" src={grmb} alt="gradient" />
         </div>
         {/* Text */}
         <div className="text-center mb-16 md:px-2 mt-44">
           <h2
-            className="md:text-5xl text-[1.7rem] mb-6 font-[neue] bg-gradient-to-r from-[#000] via-white to-[#000] 
+            className="md:text-5xl text-[2rem] mb-6 font-[neue] bg-gradient-to-r from-[#000] via-white to-[#000] 
   bg-clip-text text-transparent font-semibold"
           >
             Discover What We’ve Crafted
