@@ -85,7 +85,7 @@ const About = () => {
       {/* Upper Text */}
       <div
         className="lg:text-5xl md:text-3xl text-[2rem] md:w-[75%] w-full lg:leading-14 px-2 bg-gradient-to-r from-[#343434] via-white to-[#fff] 
-  bg-clip-text text-transparent"
+  bg-clip-text text-transparent leading-10"
       >
         <p>
           We create websites{" "}
@@ -101,7 +101,7 @@ const About = () => {
           , solutions{" "}
           <span className="border border-[#ffffff14] lg:w-16 md:w-12 lg:h-8 md:h-8 w-8 h-5 rounded-full overflow-hidden inline-flex justify-center items-center">
             <video
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
               autoPlay
               muted
               loop
