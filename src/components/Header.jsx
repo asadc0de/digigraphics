@@ -30,7 +30,7 @@ const Header = () => {
           {/* Desktop Menu */}
           <ul className="md:flex gap-8 hidden">
             {menuItems.map((item) => (
-              <li key={item.name} className="cursor-pointer hover:text-[#dadada] duration-300 px-3">
+              <li key={item.name} className="hover:text-[#dadada] duration-300 px-3">
                 {location.pathname === "/" ? (
                   <a href={`#${item.hash}`}>{item.name}</a>
                 ) : (
@@ -107,7 +107,7 @@ const Header = () => {
       )}
 
       {/* CSS Animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes slideInRight {
           from {
             opacity: 0;

@@ -5,6 +5,12 @@ import Lenis from "lenis";
 import { useEffect } from "react";
 
 function App() {
+  // Console Message
+  useEffect(() => {
+    console.log("Welcome to Rabt Pixel")
+  }, [])
+  
+  // Lenis Scroll
   useEffect(() => {
     const lenis = new Lenis()
     function raf(time){

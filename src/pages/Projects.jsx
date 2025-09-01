@@ -70,8 +70,8 @@ const Projects = () => {
 
   return (
     <>
-      <div className="relative w-full min-h-screen overflow-hidden lg:px-28 md:px-22 px-4">
         <Header />
+      <div className="relative w-full min-h-screen overflow-hidden lg:px-28 md:px-22 px-4">
         {/* Overlay */}
         <div className="absolute hidden md:block left-1/2 -top-18 -translate-x-1/2 w-[80%] -z-100">
           <img src={gradient} alt="gradient" />

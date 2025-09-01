@@ -1,4 +1,3 @@
-import React from "react";
 import TextPressure from "./TextPressure";
 
 const Footer = () => {
@@ -44,7 +43,7 @@ const Footer = () => {
           >
             Facebook
           </a>
-          <a className="hover:opacity-80 duration text-[#090909]" href="rabtpixel@gmail.com">
+          <a className="hover:opacity-80 duration text-[#090909]" href="mailto:rabtpixel@gmail.com">
             Email
           </a>
         </div>

@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "./Header";
 import DarkVeil from "./DarkVeil";
 import { CardDemo } from "./CardDemo";
@@ -61,7 +60,7 @@ const HeroSection = () => {
         <div className="mt-16">
           <Cta
             text={"Launch Your Online Presence"}
-            link={"https://wa.me/+923150676136"}
+            link={"https://wa.me/+923150676136?text=Hey there! I want to make a website for my: "}
           />
         </div>
         {/* Animated Icons */}
