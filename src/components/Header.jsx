@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Image from "../assets/logo.png";
 import { useState } from "react";
 
 const Header = () => {
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -11,11 +12,10 @@ const Header = () => {
   
 
   const menuItems = [
-    { name: "Projects", href: "/projects" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "Contact", href: "#contact" },
+    { name: "About", hash: "about" },
+    { name: "Services", hash: "services" },
+    { name: "Work", hash: "work" },
+    { name: "Contact", hash: "contact" },
   ];
 
   return (
@@ -29,9 +29,13 @@ const Header = () => {
         <nav>
           {/* Desktop Menu */}
           <ul className="md:flex gap-8 hidden">
-            {menuItems.map((item, href) => (
+            {menuItems.map((item) => (
               <li key={item.name} className="cursor-pointer hover:text-[#dadada] duration-300 px-3">
-                <a href={item.href}>{item.name}</a>
+                {location.pathname === "/" ? (
+                  <a href={`#${item.hash}`}>{item.name}</a>
+                ) : (
+                  <Link to={`/#${item.hash}`}>{item.name}</Link>
+                )}
               </li>
             ))}
           </ul>
@@ -67,21 +71,9 @@ const Header = () => {
                 <ul className="space-y-6">
                   {menuItems.map((item, index) => (
                     <li key={item.name}>
-                      {item.name === "Projects" ? (
-                        <Link
-                          to={item.href}
-                          onClick={toggleMenu}
-                          className="text-xl font-[neue] text-white hover:text-[#CDD1D8] transition-all duration-300 block py-3 border-b border-transparent hover:border-[#ffffff14] text-center"
-                          style={{
-                            animationDelay: `${index * 100}ms`,
-                            animation: 'slideInRight 0.5s ease-out forwards'
-                          }}
-                        >
-                          {item.name}
-                        </Link>
-                      ) : (
+                      {location.pathname === "/" ? (
                         <a
-                          href={item.href}
+                          href={`#${item.hash}`}
                           onClick={toggleMenu}
                           className="text-xl font-[neue] text-white hover:text-[#CDD1D8] transition-all duration-300 block py-3 border-b border-transparent hover:border-[#ffffff14] text-center"
                           style={{
@@ -91,6 +83,18 @@ const Header = () => {
                         >
                           {item.name}
                         </a>
+                      ) : (
+                        <Link
+                          to={`/#${item.hash}`}
+                          onClick={toggleMenu}
+                          className="text-xl font-[neue] text-white hover:text-[#CDD1D8] transition-all duration-300 block py-3 border-b border-transparent hover:border-[#ffffff14] text-center"
+                          style={{
+                            animationDelay: `${index * 100}ms`,
+                            animation: 'slideInRight 0.5s ease-out forwards'
+                          }}
+                        >
+                          {item.name}
+                        </Link>
                       )}
                     </li>
                   ))}

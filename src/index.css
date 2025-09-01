@@ -12,6 +12,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: neue;
   src: url("./assets/fonts/NeueMachina-Regular.otf") format("opentype");
@@ -19,26 +20,30 @@
   font-style: normal;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
-body{
+
+body {
   font-family: 'neue';
   overflow-x: hidden;
   max-width: 100vw;
   position: relative;
   cursor: url('./assets/cursor.png'), auto;
 }
-.cta{
+
+.cta {
   border: 1px solid #ffffff14;
   background-color: #20202060;
 }
-.trust{
+
+.trust {
   border: 1px solid #ffffff14;
 }
 
 /* Mobile-specific overflow fixes */
-html, body {
+html,
+body {
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
@@ -47,8 +52,12 @@ html, body {
 /* Ensure all containers respect viewport width */
 * {
   box-sizing: border-box;
+  will-change: auto;
 }
-
+.animated-element {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
 /* Mobile-specific container constraints */
 @media (max-width: 768px) {
   .bento-section::before {
@@ -58,33 +67,33 @@ html, body {
     top: 20%;
     filter: blur(40px);
   }
-  
+
   /* Reduce blur effects on mobile for better performance */
   .bento-section::before {
     filter: blur(40px);
   }
-  
+
   /* Prevent horizontal overflow on mobile */
   .overflow-hidden {
     overflow-x: hidden !important;
   }
-  
+
   /* Ensure all containers respect viewport width */
   .w-full {
     max-width: 100vw !important;
   }
-  
+
   /* Fix for fixed positioned elements */
   .fixed {
     max-width: 100vw !important;
   }
-  
+
   /* Reduce padding on mobile */
   .px-4 {
     padding-left: 1rem !important;
     padding-right: 1rem !important;
   }
-  
+
   /* Ensure proper text wrapping */
   .text-center {
     word-wrap: break-word;
@@ -137,25 +146,12 @@ html, body {
   animation-delay: 2s;
 }
 
-/* Custom scrollbar for better aesthetics */
-/* ::-webkit-scrollbar {
-  width: 8px;
-}
 
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #8b5cf6, #3b82f6);
-  backdrop-filter: blur(30px);
-  border-radius: 4px;
-} */
 
 .bento-section {
   position: relative;
   overflow: hidden;
-  
+
 }
 
 .bento-section::before {
@@ -168,11 +164,11 @@ html, body {
   height: 70%;
   top: 10%;
   left: 20%;
-  background: 
-    radial-gradient(circle, 
-      rgb(255, 255, 255) 0%, 
-      rgba(5, 0, 163, 0.947) 30%, 
-      rgb(0, 34, 87) 60%, 
+  background:
+    radial-gradient(circle,
+      rgb(255, 255, 255) 0%,
+      rgba(5, 0, 163, 0.947) 30%,
+      rgb(0, 34, 87) 60%,
       transparent 100%);
   border-radius: 50%;
   filter: blur(80px);
@@ -180,32 +176,15 @@ html, body {
   animation: blueGlow1 4s ease-in-out infinite alternate;
 }
 
-/* .bento-section::after {
-  content: '';
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  bottom: 15%;
-  right: 15%;
-  background: 
-    radial-gradient(circle, 
-      rgba(255, 255, 255, 0.8) 0%, 
-      rgba(59, 130, 246, 0.6) 25%, 
-      rgba(59, 130, 246, 0.2) 50%, 
-      transparent 100%);
-  border-radius: 50%;
-  filter: blur(70px);
-  z-index: -1;
-  animation: blueGlow2 5s ease-in-out infinite alternate-reverse;
-} */
 
 @keyframes blueGlow1 {
-  0% { 
+  0% {
     opacity: 0.7;
     transform: scale(1);
     filter: blur(80px) brightness(1);
   }
-  100% { 
+
+  100% {
     opacity: 1;
     transform: scale(1.1);
     filter: blur(60px) brightness(1.3);
@@ -213,12 +192,13 @@ html, body {
 }
 
 @keyframes blueGlow2 {
-  0% { 
+  0% {
     opacity: 0.6;
     transform: scale(1);
     filter: blur(70px) brightness(1);
   }
-  100% { 
+
+  100% {
     opacity: 0.9;
     transform: scale(1.05);
     filter: blur(50px) brightness(1.2);
@@ -234,11 +214,12 @@ html, body {
 .animation-delay-2000 {
   animation-delay: 2s;
 }
+
 .animation-delay-4000 {
   animation-delay: 4s;
 }
 
-/* From Uiverse.io by ArturCodeCraft */ 
+/* From Uiverse.io by ArturCodeCraft */
 /* <reset-style> ============================ */
 button {
   border: none;
@@ -248,6 +229,7 @@ button {
   cursor: pointer;
   font-family: inherit;
 }
+
 /* <main-style> ============================ */
 .menu__icon {
   width: 2rem;
@@ -262,7 +244,7 @@ button {
   position: absolute;
   top: calc(.25rem - 1px);
   left: calc(.25rem - 1px);
-  transition: transform .1806s cubic-bezier(.04,.04,.12,.96);
+  transition: transform .1806s cubic-bezier(.04, .04, .12, .96);
 }
 
 .menu__icon span:before {
@@ -272,7 +254,7 @@ button {
   background-color: #fff;
   position: absolute;
   left: 0;
-  transition: transform .1596s cubic-bezier(.52,.16,.52,.84) .1008s;
+  transition: transform .1596s cubic-bezier(.52, .16, .52, .84) .1008s;
 }
 
 /* Default hamburger state */
@@ -289,13 +271,13 @@ button {
 /* Hover state */
 .menu__icon:hover :nth-child(1),
 .menu__icon:hover :nth-child(2) {
-  transition: transform .3192s cubic-bezier(.04,.04,.12,.96) .1008s;
+  transition: transform .3192s cubic-bezier(.04, .04, .12, .96) .1008s;
 }
 
 .menu__icon:hover :nth-child(1)::before,
 .menu__icon:hover :nth-child(2)::before {
   transform: none;
-  transition: transform .1806s cubic-bezier(.04,.04,.12,.96);
+  transition: transform .1806s cubic-bezier(.04, .04, .12, .96);
 }
 
 .menu__icon:hover :nth-child(1) {
@@ -318,7 +300,7 @@ button {
 .menu__icon.active :nth-child(1)::before,
 .menu__icon.active :nth-child(2)::before {
   transform: none !important;
-  transition: transform .1806s cubic-bezier(.04,.04,.12,.96);
+  transition: transform .1806s cubic-bezier(.04, .04, .12, .96);
 }
 
 /* Ensure default state when not active */

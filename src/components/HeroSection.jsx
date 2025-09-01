@@ -52,7 +52,7 @@ const HeroSection = () => {
         {/* Slogan */}
         <p
           id="slogan"
-          className="font-[matter-light] md:mt-4 mt-6 lg:text-xl md:text-lg text-sm md:w-[70%] w-[90%] max-w-full text-[#CDD1D8]"
+          className="font-[matter-light] md:mt-4 mt-6 lg:text-xl md:text-lg text-base md:w-[70%] w-[90%] max-w-full text-[#CDD1D8]"
         >
           Great Ideas, Greater Websites — Growing Your Business Online
         </p>

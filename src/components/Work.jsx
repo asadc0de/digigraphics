@@ -8,12 +8,12 @@ const Work = () => {
   return (
     <div
       id="work"
-      className="scroll-mt-16 w-full lg:px-28 md:px-22 px-4 py-14 relative overflow-hidden bg-[#000000]"
+      className="scroll-mt-16 w-full lg:px-28 md:px-22 px-4 py-14 relative overflow-hidden bg-[#000000] animated-element"
     >
       {/* Text */}
       <h2
-        class="lg:text-5xl md:text-3xl text-[1.7rem] font-bold text-center font-[neue] bg-gradient-to-r from-[#343434] via-white to-[#343434] 
-  bg-clip-text text-transparent leading-14"
+        class="lg:text-5xl md:text-3xl text-[2rem] font-bold text-center font-[neue] bg-gradient-to-r from-[#343434] via-white to-[#343434] 
+  bg-clip-text text-transparent md:leading-14 leading-10"
       >
         Some Fancy Selected Work
       </h2>

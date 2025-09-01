@@ -1,6 +1,8 @@
 import { useRef, useEffect } from "react";
 import { Renderer, Program, Mesh, Triangle, Vec2 } from "ogl";
 
+
+
 const vertex = `
 attribute vec2 position;
 void main(){gl_Position=vec4(position,0.0,1.0);}
@@ -90,6 +92,10 @@ export default function DarkVeil({
     const renderer = new Renderer({
       dpr: Math.min(window.devicePixelRatio, 2),
       canvas,
+      canvas: canvas,
+      antialias: false, // Turn off for performance
+      powerPreference: "high-performance",
+      failIfMajorPerformanceCaveat: false,
     });
 
     const gl = renderer.gl;
@@ -116,6 +122,7 @@ export default function DarkVeil({
         h = parent.clientHeight;
       renderer.setSize(w * resolutionScale, h * resolutionScale);
       program.uniforms.uResolution.value.set(w, h);
+      
     };
 
     window.addEventListener("resize", resize);
@@ -151,10 +158,5 @@ export default function DarkVeil({
     warpAmount,
     resolutionScale,
   ]);
-  return (
-    <canvas
-      ref={ref}
-      className="w-full h-full block"
-    />
-  );
+  return <canvas ref={ref} className="w-full h-full block" />;
 }

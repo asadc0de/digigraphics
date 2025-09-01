@@ -5,13 +5,13 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="w-full lg:px-28 md:px-22 px-4 overflow-hidden py-14 scroll-m-22"
+      className="w-full lg:px-28 md:px-22 px-4 overflow-hidden py-14 scroll-m-22 animated-element"
     >
       {/* Text */}
       <div className="text-center mb-16 px-2">
         <h2
-          className="lg:text-5xl md:text-3xl text-[1.7rem] font-bold mb-6 font-[neue] bg-gradient-to-r from-[#343434] via-white to-[#343434] 
-  bg-clip-text text-transparent leading-14"
+          className="lg:text-5xl md:text-3xl text-[2rem] font-bold mb-6 font-[neue] bg-gradient-to-r from-[#343434] via-white to-[#343434] 
+  bg-clip-text text-transparent md:leading-14 leading-10"
         >
           Design Solutions That Deliver
         </h2>
