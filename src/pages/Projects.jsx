@@ -10,13 +10,19 @@ import project5 from "../assets/pr5.png";
 import project6 from "../assets/pr6.png";
 import project7 from "../assets/pr7.png";
 import project8 from "../assets/pr8.png";
+import project9 from "../assets/pr9.png";
 import Footer from "../components/Footer";
 
 const projects = [
+  // {
+  //   title: "Marrying Muslims",
+  //   image: project1,
+  //   url: "https://marryingmuslims.vercel.app",
+  // },
   {
-    title: "Marrying Muslims",
-    image: project1,
-    url: "https://marryingmuslims.vercel.app",
+  title: "Invoicify - Invoice Generator",
+    image: project9,
+    url: "https://invoicify-xi.vercel.app",
   },
   {
     title: "Talently Global Network",
