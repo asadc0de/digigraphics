@@ -1,7 +1,7 @@
 import React from "react";
 import project1 from "../assets/pr1.png";
 import project2 from "../assets/pr2.png";
-import project3 from "../assets/pr3.png";
+import project9 from "../assets/pr9.png";
 import Cta from "./Cta";
 
 const Work = () => {
@@ -32,11 +32,11 @@ const Work = () => {
       {/* Container */}
       <section className="mt-14 flex lg:flex-row flex-col justify-center items-center gap-3 px-2">
         {/* Card 1 */}
-        <a href="https://marryingmuslims.vercel.app" className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden flex flex-col items-center justify-center hover:scale-98 transition-transform duration-300 cusror-pointer">
+        <a href="https://invoicify-xi.vercel.app" className="relative flex-1 h-[60vw] min-h-[220px] max-h-[500px] md:h-[80vh] md:min-h-[350px] md:max-h-none rounded-3xl border border-[#ffffff14] overflow-hidden flex flex-col items-center justify-center hover:scale-98 transition-transform duration-300 cusror-pointer">
           {/* Image */}
           <img
             className="object-cover"
-            src={project1}
+            src={project9}
             alt="Image is loading"
           />
 
